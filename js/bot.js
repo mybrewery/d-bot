@@ -9,7 +9,7 @@ var Bot = function(){
 
 Bot.prototype = {
 	think : function(){
-		return (Math.random() * 3000 + 1500);
+		return (Math.random() * 2000 + 800);
 	},
 	generate : function(text){
 		var split = text.split(' ');
