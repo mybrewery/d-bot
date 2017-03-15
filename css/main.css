@@ -1,0 +1,96 @@
+@font-face {
+    font-family: Helvetica;
+    src: url(../fonts/helvetica.ttf);
+    font-weight: 100;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: #ffffff;
+}
+
+body {
+	padding-top: 16px;
+    box-sizing: border-box;
+}
+
+.chat {
+	width: 40%;
+	margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#history {
+	background: #eeeeee;
+    height: 80%;
+    border-radius: 3px;
+    border: 4px solid #e4e4e4;
+    overflow: hidden;
+}
+
+#history > div {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+.message {
+	padding: 0 16px 0 16px;
+	padding-bottom: 0;
+	font-size: 16px;
+	font-weight: bold;
+	transition: 0.2s ease;
+	position: relative;
+	height: 0;
+}
+
+.message > div {
+	position: absolute;
+	top : 0;
+	display: inline-block;
+    width: 67%;
+    border-radius: 3px;
+    font-family: 'Helvetica';
+    box-shadow: 2px 2px 5px rgba(195, 195, 195, 0.58);
+    margin: 0 0 16px 0;
+}
+
+.message > div > p {
+	margin: 0;
+    padding: 12px;
+}
+
+.message.bot > div{
+	margin-left: 33%;
+    background: #f44336;
+    color : #ffffff;
+    transform: translateX(-32px);
+}
+
+.message.user > div{
+	background: #ffffff;
+	color: #464646;
+}
+
+#field {
+	height: 20%;
+	background: transparent;
+	padding-top: 16px;
+}
+
+#field textarea {
+	width: 100%;
+	box-sizing: border-box;
+	resize: none;
+	outline: none;
+	font-family: 'Helvetica';
+	padding: 8px;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 3px;
+    border: 4px solid #e4e4e4;
+}
