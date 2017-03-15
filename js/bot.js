@@ -9,7 +9,7 @@ var Bot = function(){
 
 Bot.prototype = {
 	think : function(){
-		return (Math.random() * 2000 + 800);
+		return (Math.random() * 2000 + 2000);
 	},
 	generate : function(text){
 		var split = text.split(' ');
@@ -23,11 +23,11 @@ Bot.prototype = {
 
 		for (var a = 0; a < this.mind.size; a++){
 			for (var b = 0; b < split.size; b++){
-				if (split[b].length < 4){
+				if (split[b].length < 3){
 					continue;
 				}
 
-				lowString = split[b].substring(0, 4);
+				lowString = split[b].substring(0, 3);
 				capString = lowString.charAt(0).toUpperCase() + lowString.slice(1);
 
 				if (this.mind[a].indexOf(lowString) > -1 || this.mind[a].indexOf(capString) > -1){
