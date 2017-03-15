@@ -46,6 +46,7 @@ body {
 	transition: 0.2s ease;
 	position: relative;
 	height: 0;
+
 }
 
 .message > div {
@@ -56,6 +57,7 @@ body {
     font-family: 'Helvetica';
     box-shadow: 2px 2px 5px rgba(195, 195, 195, 0.58);
     margin: 0 0 16px 0;
+    max-width: 65%;
 }
 
 .message > div > p {
