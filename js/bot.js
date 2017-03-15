@@ -8,8 +8,8 @@ var Bot = function(){
 };
 
 Bot.prototype = {
-	think : function(){
-		return (Math.random() * 2000 + 2000);
+	think : function(secs){
+		return (Math.random() * secs + secs) * 1000;
 	},
 	generate : function(text){
 		var split = text.split(' ');
@@ -38,7 +38,7 @@ Bot.prototype = {
 		}
 
 		if (vars.length && Math.random() > 0.25){
-			id = vars[Math.floor( Math.random() * (vars.length - 1))];
+			id = vars[Math.floor(Math.random() * (vars.length - 1))];
 		} else {
 			id = Math.floor(Math.random() * (this.mind.size - 1));
 		}
@@ -52,8 +52,16 @@ Bot.prototype = {
 		clearTimeout(this.timeoutID);
 
 		this.timeoutID = setTimeout(function(){
-			this.say(this.generate(text));
-		}.bind(this), this.think());
+			var replic = this.generate(text);
+			this.say(replic);
+
+			if (Math.random() > 0.75){
+				this.timeoutID = setTimeout(function(){
+					this.say(this.generate(''));
+				}.bind(this), this.think(8));
+			}
+
+		}.bind(this), this.think(2));
 	}
 };
 

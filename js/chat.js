@@ -33,6 +33,8 @@ USER_INPUT.addEventListener('keypress', function(ev){
 	}
 });
 
+USER_INPUT.focus();
+
 
 /*begin*/
 var bot = new window.Bot();
