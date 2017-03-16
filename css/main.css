@@ -4,12 +4,16 @@
     font-weight: 100;
 }
 
+html {
+	background: url('../graphics/1920x1080.png');
+	background-size: 100% auto;
+}
+
 html, body {
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	background: #ffffff;
 }
 
 body {
@@ -25,10 +29,9 @@ body {
 }
 
 #history {
-	background: #eeeeee;
+	background: rgba(238, 238, 238, 0.38);
     height: 80%;
     border-radius: 3px;
-    border: 4px solid #e4e4e4;
     overflow: hidden;
 }
 
@@ -55,7 +58,6 @@ body {
 	display: inline-block;
     border-radius: 3px;
     font-family: 'Helvetica';
-    box-shadow: 2px 2px 5px rgba(195, 195, 195, 0.58);
     margin: 0 0 16px 0;
     max-width: 65%;
 }
@@ -66,7 +68,7 @@ body {
 }
 
 .message.bot > div{
-    background: #f44336;
+    background: #46262f;
     color : #ffffff;
     transform: translateX(-32px);
     right: -16px;
@@ -81,6 +83,7 @@ body {
 	height: 20%;
 	background: transparent;
 	padding-top: 16px;
+	padding-bottom: 16px;
 }
 
 #field textarea {
@@ -93,6 +96,29 @@ body {
 	font-size: 16px;
 	font-weight: bold;
 	border-radius: 3px;
-    border: 4px solid #e4e4e4;
     color : #464646;
+    border: none;
+   	height: 100%;
+}
+
+@media screen and (max-aspect-ratio: 16/9) {
+     html {
+    	background-size: auto 100%;
+    }
+}
+
+@media screen and (max-aspect-ratio: 3/2) {
+    .chat {
+    	width: 60%
+    } 
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .chat {
+    	width: 90%
+    }
+
+    html {
+    	background-size: auto 100%;
+    }
 }
