@@ -15,6 +15,9 @@ var Bot = function(){
 };
 
 Bot.prototype = {
+	forgetAll : function(){
+		if (localStorage) localStorage.clear();
+	},
 	save : function(){
 		if (localStorage){
 			localStorage.setItem("dummy-bot-extramind", JSON.stringify(this.extraMind));
@@ -27,10 +30,17 @@ Bot.prototype = {
 			data = localStorage.getItem("dummy-bot-extramind");
 		}
 
-		if (data){
-			data = JSON.parse(data);
-			this.mind = this.mind.concat(data);
+		try {
+			if (data && typeof data == 'string'){
+				data = JSON.parse(data);
+				this.mind = this.mind.concat(data);
+			}
+		} catch (err){
+			this.forgetAll();
+			console.warn('BOT-ERROR', 'broken loaded data');
 		}
+
+		
 
 		return data;
 	},
