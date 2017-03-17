@@ -140,25 +140,41 @@ body {
 #menu {
 	position: absolute;
 	height: 100%;
-	width: 600px;
-	background: #CC0000;
+	width: 300px;
+	background: #f7f7f7;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.35);
 	top: 0;
-	transition: width 0.7s cubic-bezier(0.64, 0.32, 0.71, 1.2); 
 	left: 0%;
+	box-sizing: border-box;
+	padding: 16px;
+	overflow: auto;
+}
+
+#menu table {
 }
 
 #menu.hidden {
-	width: 70px;
+	width: 50px;
+}
+
+#menu.hidden #button {
+	visibility: visible;
+}
+
+#menu.hidden table {
+	display: none;
 }
 
 #button {
-	width: 50px;
-	height: 50px;
-	background: black;
+	visibility: hidden;
+	width: 30px;
+	height: 30px;
 	position: absolute;
 	right: 10px;
 	top: 10px;
 	cursor: pointer;
+	background-size: 30px 30px;
+	background-image: url('../graphics/menu.png')
 }
 
 #heading {
@@ -166,3 +182,76 @@ body {
 	color: black;
 	font-size:20px;
 }
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	font-family: Helvetica;
+	font-size: 16px;
+}
+
+td {
+	text-indent: -9999px;
+	height: 150px;
+	padding: 16px 8px 0 8px;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+td div {
+	width: 100%;
+	height: 100%;
+	background: grey;
+	border-radius: 5px;
+}
+
+/*themes*/
+td.t0 div {
+	background-color: #3f51b5;
+}
+
+td.t1 div {
+	background-color: #8bc34a;
+}
+
+td.t2 div {
+	background-color: #f44336;
+}
+
+td.t3 div {
+	background-color: #ffc107;
+}
+
+td.t4 div {
+	background-color: #00bcd4;
+}
+
+td.t5 div {
+	background-color: #673ab7;
+}
+
+.message.bot > div[data-theme=t0] {
+	background-color: #3f51b5;
+}
+
+.message.bot > div[data-theme=t1] {
+	background-color: #8bc34a;
+}
+
+.message.bot > div[data-theme=t2] {
+	background-color: #f44336;
+}
+
+.message.bot > div[data-theme=t3] {
+	background-color: #ffc107;
+}
+
+.message.bot > div[data-theme=t4] {
+	background-color: #00bcd4;
+}
+
+.message.bot > div[data-theme=t5] {
+	background-color: #673ab7;
+}
+
+
