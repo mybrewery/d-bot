@@ -66,13 +66,13 @@ menu.addEventListener('click', function(){
 	}
 }, false);
 
-menu.addEventListener('mousewheel', function(evt){ 
-	if (evt.wheelDelta > 0) {
-		menu.scrollTop -= SCROLLSPEED;
-	} else {
-		menu.scrollTop += SCROLLSPEED;
-	}
-});
+// menu.addEventListener('mousewheel', function(evt){ 
+// 	if (evt.wheelDelta > 0) {
+// 		menu.scrollTop -= SCROLLSPEED;
+// 	} else {
+// 		menu.scrollTop += SCROLLSPEED;
+// 	}
+// });
 
 menu.addEventListener('mouseover', function(){ menu.hovered = true; });
 menu.addEventListener('mouseout', function(){ menu.hovered = false; });

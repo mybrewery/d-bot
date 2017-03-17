@@ -137,22 +137,11 @@ body {
 
 #menu {
 	position: absolute;
-	height: 100%;
-	width: 300px;
-	background: #f7f7f7;
-	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.35);
-	top: 0;
-	left: 0%;
+	width: 36px;
+	top: 16px;
+	left: 16px;
 	box-sizing: border-box;
 	padding: 0px;
-	overflow: hidden;
-}
-
-#menu table {
-}
-
-#menu.hidden {
-	left: -255px;
 }
 
 #heading {
@@ -165,22 +154,30 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	font-family: Helvetica;
-	font-size: 16px;
+	font-size: 1px;
+
 }
 
 td {
 	text-indent: -9999px;
-	height: 150px;
-	padding: 16px 8px 0 8px;
-	box-sizing: border-box;
+	height: 36px;
+	width: 36px;
+	padding-bottom: 8px;
 	cursor: pointer;
+	transition: opacity 0.3s ease;
 }
+
+td:hover div{
+	opacity: 1;
+}
+
 
 td div {
 	width: 100%;
 	height: 100%;
 	background: grey;
-	border-radius: 5px;
+	border-radius: 3px;
+	opacity: 0.65
 }
 
 /*themes*/
@@ -189,7 +186,7 @@ td.t0 div {
 }
 
 td.t1 div {
-	background-color: #29635d;
+	background-color: #628637;
 }
 
 td.t2 div {
@@ -197,11 +194,11 @@ td.t2 div {
 }
 
 td.t3 div {
-	background-color: #2f0835;
+	background-color: #603e2d;
 }
 
 td.t4 div {
-	background-color: #00bcd4;
+	background-color: #145758;
 }
 
 td.t5 div {
