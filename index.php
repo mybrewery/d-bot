@@ -3,24 +3,18 @@
 <head>
 	<title>dBot</title>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<div id="bg">
-		<img src="./graphics/bg5.png">
-	</div>
 	<div id="history" class="chat">
 		<div id="history-content">
 			<!-- content -->
 		</div>
 	</div>
 	<div id="field" class="chat">
-		<form><textarea id="user-input"rows="3"></textarea></form>
+		<textarea id="user-input"rows="3"></textarea>
 	</div>
-	<!-- <div id="menu" class="hidden">
-		<div id="button"></div>
-		<h3 id='heading'>Hello</h3>
-	</div> -->
 	<script type="text/javascript" src="./js/mind.js"></script>
 	<script type="text/javascript" src="./js/bot.js"></script>
 	<script type="text/javascript" src="./js/chat.js"></script>

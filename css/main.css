@@ -5,8 +5,9 @@
 }
 
 html {
-	background: url('../graphics/1920x1080.png');
-	background-size: 100% auto;
+	overflow: hidden;
+	background: #120d0b;
+
 }
 
 html, body {
@@ -14,6 +15,17 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+}
+
+#bg {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	filter: blur(60px);
+}
+
+#bg img {
+	width: 100%;
 }
 
 body {
@@ -109,16 +121,48 @@ body {
 
 @media screen and (max-aspect-ratio: 3/2) {
     .chat {
-    	width: 60%
+    	width: 90%
     } 
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    .chat {
-    	width: 90%
-    }
+    
 
     html {
     	background-size: auto 100%;
     }
+}
+
+#field form {
+	height: 100%;
+}
+
+#menu {
+	position: absolute;
+	height: 100%;
+	width: 600px;
+	background: #CC0000;
+	top: 0;
+	transition: width 0.7s cubic-bezier(0.64, 0.32, 0.71, 1.2); 
+	left: 0%;
+}
+
+#menu.hidden {
+	width: 70px;
+}
+
+#button {
+	width: 50px;
+	height: 50px;
+	background: black;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+}
+
+#heading {
+	position: relative;
+	color: black;
+	font-size:20px;
 }

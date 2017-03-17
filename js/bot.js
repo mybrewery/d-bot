@@ -4,6 +4,9 @@ var Bot = function(){
 	this.mind = window.mind;
 	this.extraMind = this.load() || [];
 
+	this.autotalk = false;
+	this.prevmsg = -1;
+
 	this.say('Привет');
 };
 
@@ -70,10 +73,19 @@ Bot.prototype = {
 			this.remember(text);
 		}
 
+		if (this.prevmsg == id){
+			return this.generate(text);
+		}
+
+		this.prevmsg = id;
+
 		return this.mind[id];
 	},
 	say : function(text){
-		makeMessage('bot', text);
+		makeMessage('bot', text, this.autotalk);
+		if (this.autotalk){
+			this.answer(text);
+		}
 	},
 	answer : function(text){
 		clearTimeout(this.timeoutID);
@@ -88,7 +100,7 @@ Bot.prototype = {
 				}.bind(this), this.think(8));
 			}
 
-		}.bind(this), this.think(2));
+		}.bind(this), this.think(1.5));
 	}
 };
 

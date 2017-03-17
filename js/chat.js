@@ -40,7 +40,7 @@ USER_INPUT.focus();
 var bot = new window.Bot();
 
 /*--------------------------------------------------------------------*/
-function makeMessage(type, text){
+function makeMessage(type, text, autotalk){
 	return new Message(type, text, HISTORY_NODE);
 }
 
@@ -48,3 +48,17 @@ function makeUserMessage(text){
 	makeMessage('user', text);
 	bot.answer(text);
 }
+
+
+var menu = document.getElementById('menu');
+
+menu.button = document.getElementById('button');
+
+menu.button.addEventListener('click', function(){
+	if (menu.classList.contains('hidden')){
+		menu.classList.remove('hidden');
+	} else {
+		menu.classList.add('hidden');
+	}
+}, false);
+
