@@ -9,22 +9,22 @@ var Bot = function(){
 
 	this.chunksize = 4;
 
-	this.excl = [ 'что', 'как', 'при' ];
+	this.exceptions = "как что где при так вас расс";
 
-	this.say('Привет');
+	this.say("Привет");
 };
 
 Bot.prototype = {
 	save : function(){
 		if (localStorage){
-			localStorage.setItem('dummy-bot-extramind', JSON.stringify(this.extraMind));
+			localStorage.setItem("dummy-bot-extramind", JSON.stringify(this.extraMind));
 		}
 	},
 	load : function(){
 		var data;
 
 		if (localStorage){
-			data = localStorage.getItem('dummy-bot-extramind');
+			data = localStorage.getItem("dummy-bot-extramind");
 		}
 
 		if (data){
@@ -48,7 +48,7 @@ Bot.prototype = {
 		text = text.replace(/\?/g,"");
 		text = text.replace(/\)/g,"");
 
-		var split = text.split(' ');
+		var split = text.split(" ");
 		var vars = [];
 		var id;
 		var chunk;
@@ -56,15 +56,21 @@ Bot.prototype = {
 
 		split.size = split.length;
 
-		console.log('USR-SPLIT:', split);
+		console.log("USR-SPLIT:", split);
 
 		for (var a = 0, l = this.mind.length; a < l; a++){
 			for (var b = 0; b < split.size; b++){
 				chunk = split[b].substring(0, this.chunksize);
-				match = this.mind[a].match(new RegExp(chunk,"i"));
+				match = this.exceptions.match(new RegExp(chunk, "i"));
+
+				if (chunk.length < 3 || (match && match.length > 0)){
+					continue;
+				}
+
+				match = this.mind[a].match(new RegExp(chunk, "i"));
 
 				if (match && match.length > 0){
-					console.log('BOT-FOUND:', this.mind[a]);
+					console.log("BOT-FOUND:", this.mind[a]);
 					vars.push(a);
 				}			
 			}
@@ -74,25 +80,25 @@ Bot.prototype = {
 			id = vars[Math.floor(Math.random() * (vars.length - 1))];
 		} else {
 			id = Math.floor(Math.random() * (this.mind.length - 1));
-			console.log('BOT-RAND', this.mind[id]);
+			console.log("BOT-RAND", this.mind[id]);
 		}
 
 		if (split.length > 1 && !(/(.)\1\1/.test(text)) && this.mind.indexOf(text) < 0){
-			console.log('BOT-MEM', text);
+			console.log("BOT-MEM", text);
 			this.remember(text);
 		}
 
 		if (this.prevmsg == id || this.mind[id] == this.prevusermsg){
-			console.log('BOT-REGEN');
+			console.log("BOT-REGEN");
 			return this.generate(text);
 		}
 
 		this.prevmsg = id;
 
-		return this.mind[id].split(' // ')[0];
+		return this.mind[id].split(" // ")[0];
 	},
 	say : function(text){
-		makeMessage('bot', text, this.autotalk);
+		makeMessage("bot", text, this.autotalk);
 		if (this.autotalk){
 			this.answer(text);
 		}
@@ -108,7 +114,7 @@ Bot.prototype = {
 
 			if (Math.random() > 0.75){
 				this.timeoutID = setTimeout(function(){
-					this.say(this.generate(''));
+					this.say(this.generate(""));
 				}.bind(this), this.think(8));
 			}
 
