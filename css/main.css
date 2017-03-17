@@ -207,11 +207,11 @@ td div {
 
 /*themes*/
 td.t0 div {
-	background-color: #3f51b5;
+	background-color: #141b40;
 }
 
 td.t1 div {
-	background-color: #8bc34a;
+	background-color: #29635d;
 }
 
 td.t2 div {
@@ -219,7 +219,7 @@ td.t2 div {
 }
 
 td.t3 div {
-	background-color: #ffc107;
+	background-color: #2f0835;
 }
 
 td.t4 div {
@@ -227,15 +227,15 @@ td.t4 div {
 }
 
 td.t5 div {
-	background-color: #673ab7;
+	background-color: #ccb916;
 }
 
 .message.bot > div[data-theme=t0] {
-	background-color: #3f51b5;
+	background-color: #141b40;
 }
 
 .message.bot > div[data-theme=t1] {
-	background-color: #8bc34a;
+	background-color: #29635d;
 }
 
 .message.bot > div[data-theme=t2] {
@@ -243,7 +243,7 @@ td.t5 div {
 }
 
 .message.bot > div[data-theme=t3] {
-	background-color: #ffc107;
+	background-color: #2f0835;
 }
 
 .message.bot > div[data-theme=t4] {
@@ -251,7 +251,7 @@ td.t5 div {
 }
 
 .message.bot > div[data-theme=t5] {
-	background-color: #673ab7;
+	background-color: #ccb916;
 }
 
 
