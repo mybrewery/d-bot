@@ -7,7 +7,7 @@ var Bot = function(){
 	this.autotalk = false;
 	this.prevmsg = -1;
 
-	this.chunksize = 4;
+	this.chunksize = 3;
 	this.randomless = 0.1;
 
 	this.exceptions = "как что где при так вас расс";
@@ -74,7 +74,7 @@ Bot.prototype = {
 				chunk = split[b].substring(0, this.chunksize);
 				match = this.exceptions.match(new RegExp(chunk, "i"));
 
-				if (chunk.length < 3 || (match && match.length > 0)){
+				if (chunk.length < this.chunksize || (match && match.length > 0)){
 					continue;
 				}
 
