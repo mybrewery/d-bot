@@ -7,6 +7,11 @@ var Bot = function(){
 	this.autotalk = false;
 	this.prevmsg = -1;
 
+	this.excl = [
+		'что',
+
+	];
+
 	this.say('Привет');
 };
 
@@ -47,8 +52,7 @@ Bot.prototype = {
 		var split = text.split(' ');
 		var vars = [];
 		var id;
-		var lowString;
-		var capString;
+		var chunk;
 
 		split.size = split.length;
 
@@ -56,16 +60,13 @@ Bot.prototype = {
 
 		for (var a = 0, l = this.mind.length; a < l; a++){
 			for (var b = 0; b < split.size; b++){
-				if (split[b].length < 4){
+				if (split[b].length < 3){
 					continue;
 				}
 
-				lowString = split[b].substring(0, 4).toLowerCase();
-				capString = lowString.charAt(0).toUpperCase() + lowString.slice(1);
-
-				//console.log(this.mind[a], this.mind[a].indexOf(lowString), this.mind[a].indexOf(capString), lowString, capString)
-
-				if (this.mind[a].indexOf(lowString) > -1 || this.mind[a].indexOf(capString) > -1){
+				chunk = split[b].charAt(0).toUpperCase() + split[b].slice(1);
+				
+				if (this.mind[a].match(/chunk/i)){
 					console.log('BOT-FOUND', this.mind[a]);
 					vars.push(a);
 				}
