@@ -8,6 +8,7 @@ var Bot = function(){
 	this.prevmsg = -1;
 
 	this.chunksize = 4;
+	this.randomless = 0.1;
 
 	this.exceptions = "как что где при так вас расс";
 
@@ -86,7 +87,7 @@ Bot.prototype = {
 			}
 		}
 
-		if (vars.length && Math.random() > 0.10){
+		if (vars.length && Math.random() > this.randomless){
 			id = vars[Math.floor(Math.random() * (vars.length - 1))];
 		} else {
 			id = Math.floor(Math.random() * (this.mind.length - 1));
@@ -109,11 +110,13 @@ Bot.prototype = {
 	},
 	say : function(text){
 		makeMessage("bot", text, this.autotalk);
-		if (this.autotalk){
-			this.answer(text);
-		}
 	},
 	answer : function(text){
+		if (text.indexOf('/') == 0){
+			this.run(text.split('/')[1]);
+			return;
+		}
+
 		clearTimeout(this.timeoutID);
 
 		this.prevusermsg = text;
@@ -129,6 +132,17 @@ Bot.prototype = {
 			}
 
 		}.bind(this), this.think(1.5));
+	},
+	run : function(command){
+		switch(command){
+			case 'clear memory':
+				this.forgetAll();
+				this.say('Привет');
+			break;
+			case 'get mind size':
+				this.say('Всего: ' + this.mind.length + ', из них встроенных: ' + (this.mind.length - this.extraMind.length));
+			break;
+		}
 	}
 };
 
