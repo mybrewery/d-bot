@@ -52,13 +52,13 @@ function makeUserMessage(text){
 
 var menu = document.getElementById('menu');
 
-menu.button = document.getElementById('button');
+// menu.button = document.getElementById('button');
 
-menu.button.addEventListener('click', function(){
-	if (menu.classList.contains('hidden')){
-		menu.classList.remove('hidden');
-	} else {
-		menu.classList.add('hidden');
-	}
-}, false);
+// menu.button.addEventListener('click', function(){
+// 	if (menu.classList.contains('hidden')){
+// 		menu.classList.remove('hidden');
+// 	} else {
+// 		menu.classList.add('hidden');
+// 	}
+// }, false);
 

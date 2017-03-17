@@ -39,6 +39,11 @@ Bot.prototype = {
 		return (Math.random() * secs + secs) * 1000;
 	},
 	generate : function(text){
+		text = text.replace(/\,/g,"");
+		text = text.replace(/\./g,"");
+		text = text.replace(/\?/g,"");
+		text = text.replace(/\)/g,"");
+
 		var split = text.split(' ');
 		var vars = [];
 		var id;
@@ -47,23 +52,28 @@ Bot.prototype = {
 
 		split.size = split.length;
 
+		console.log('USR-SPLIT:', split);
+
 		for (var a = 0, l = this.mind.length; a < l; a++){
 			for (var b = 0; b < split.size; b++){
 				if (split[b].length < 4){
 					continue;
 				}
 
-				lowString = split[b].substring(0, 4);
+				lowString = split[b].substring(0, 4).toLowerCase();
 				capString = lowString.charAt(0).toUpperCase() + lowString.slice(1);
 
+				//console.log(this.mind[a], this.mind[a].indexOf(lowString), this.mind[a].indexOf(capString), lowString, capString)
+
 				if (this.mind[a].indexOf(lowString) > -1 || this.mind[a].indexOf(capString) > -1){
+					console.log('BOT-FOUND', this.mind[a]);
 					vars.push(a);
 				}
 
 			}
 		}
 
-		if (vars.length && Math.random() > 0.25){
+		if (vars.length && Math.random() > 0.10){
 			id = vars[Math.floor(Math.random() * (vars.length - 1))];
 		} else {
 			id = Math.floor(Math.random() * (this.mind.length - 1));
@@ -79,7 +89,7 @@ Bot.prototype = {
 
 		this.prevmsg = id;
 
-		return this.mind[id];
+		return this.mind[id].split(' // ')[0];
 	},
 	say : function(text){
 		makeMessage('bot', text, this.autotalk);
