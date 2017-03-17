@@ -3,7 +3,7 @@
 var HISTORY_NODE = document.getElementById("history-content");
 var USER_INPUT = document.getElementById("user-input");
 var CURRENT_THEME = 0;
-
+var SCROLLSPEED = 40;
 
 /*--------------------------------------------------------------------*/
 /*message*/
@@ -56,16 +56,23 @@ function makeUserMessage(text){
 
 
 var menu = document.getElementById('menu');
+var themesTable = document.getElementById('themes');
 
-menu.button = document.getElementById('button');
-
-menu.button.addEventListener('click', function(){
+menu.addEventListener('click', function(){
 	if (menu.classList.contains('hidden')){
 		menu.classList.remove('hidden');
 	} else {
 		menu.classList.add('hidden');
 	}
 }, false);
+
+menu.addEventListener('mousewheel', function(evt){ 
+	if (evt.wheelDelta > 0) {
+		menu.scrollTop -= SCROLLSPEED;
+	} else {
+		menu.scrollTop += SCROLLSPEED;
+	}
+});
 
 menu.addEventListener('mouseover', function(){ menu.hovered = true; });
 menu.addEventListener('mouseout', function(){ menu.hovered = false; });
@@ -86,13 +93,14 @@ for (var a = 0; a < themes.length; a++){
 }
 
 function handleThemeBtn(evt){
+	evt.stopPropagation();
 	var themeID = this.getAttribute('data-theme');
 	setTheme(Number(themeID));
 }
 
 function setTheme(id){
 	CURRENT_THEME = id;
-	
+
 	var themedElements = document.getElementsByClassName('theme-sensitive');
 	var className = 't' + id;
 

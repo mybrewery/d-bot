@@ -126,8 +126,6 @@ body {
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    
-
     html {
     	background-size: auto 100%;
     }
@@ -146,35 +144,15 @@ body {
 	top: 0;
 	left: 0%;
 	box-sizing: border-box;
-	padding: 16px;
-	overflow: auto;
+	padding: 0px;
+	overflow: hidden;
 }
 
 #menu table {
 }
 
 #menu.hidden {
-	width: 50px;
-}
-
-#menu.hidden #button {
-	visibility: visible;
-}
-
-#menu.hidden table {
-	display: none;
-}
-
-#button {
-	visibility: hidden;
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	cursor: pointer;
-	background-size: 30px 30px;
-	background-image: url('../graphics/menu.png')
+	left: -255px;
 }
 
 #heading {
