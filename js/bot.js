@@ -7,10 +7,9 @@ var Bot = function(){
 	this.autotalk = false;
 	this.prevmsg = -1;
 
-	this.excl = [
-		'что',
+	this.chunksize = 4;
 
-	];
+	this.excl = [ 'что', 'как', 'при' ];
 
 	this.say('Привет');
 };
@@ -53,6 +52,7 @@ Bot.prototype = {
 		var vars = [];
 		var id;
 		var chunk;
+		var match;
 
 		split.size = split.length;
 
@@ -60,17 +60,13 @@ Bot.prototype = {
 
 		for (var a = 0, l = this.mind.length; a < l; a++){
 			for (var b = 0; b < split.size; b++){
-				if (split[b].length < 3){
-					continue;
-				}
+				chunk = split[b].substring(0, this.chunksize);
+				match = this.mind[a].match(new RegExp(chunk,"i"));
 
-				chunk = split[b].charAt(0).toUpperCase() + split[b].slice(1);
-				
-				if (this.mind[a].match(/chunk/i)){
-					console.log('BOT-FOUND', this.mind[a]);
+				if (match && match.length > 0){
+					console.log('BOT-FOUND:', this.mind[a]);
 					vars.push(a);
-				}
-
+				}			
 			}
 		}
 
@@ -78,13 +74,16 @@ Bot.prototype = {
 			id = vars[Math.floor(Math.random() * (vars.length - 1))];
 		} else {
 			id = Math.floor(Math.random() * (this.mind.length - 1));
+			console.log('BOT-RAND', this.mind[id]);
 		}
 
 		if (split.length > 1 && !(/(.)\1\1/.test(text)) && this.mind.indexOf(text) < 0){
+			console.log('BOT-MEM', text);
 			this.remember(text);
 		}
 
 		if (this.prevmsg == id || this.mind[id] == this.prevusermsg){
+			console.log('BOT-REGEN');
 			return this.generate(text);
 		}
 
