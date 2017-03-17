@@ -73,7 +73,7 @@ Bot.prototype = {
 			this.remember(text);
 		}
 
-		if (this.prevmsg == id){
+		if (this.prevmsg == id || this.mind[id] == this.prevusermsg){
 			return this.generate(text);
 		}
 
@@ -89,6 +89,8 @@ Bot.prototype = {
 	},
 	answer : function(text){
 		clearTimeout(this.timeoutID);
+
+		this.prevusermsg = text;
 
 		this.timeoutID = setTimeout(function(){
 			var replic = this.generate(text);
